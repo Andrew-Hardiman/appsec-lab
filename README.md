@@ -1,19 +1,22 @@
 # AppSec Engineering Portfolio — Andrew
 
-Backend engineer (PHP/AWS) with a focus on application security and secure-by-design engineering.
+Backend engineer (PHP/PYTHON/AWS) with a focus on application security and secure-by-design engineering.
 
-This repo contains small, reproducible security engineering case studies:
-- how vulnerabilities happen in real systems
-- how to reproduce them safely
-- how to fix them correctly
-- how to prevent recurrence (tests, patterns, SDLC controls)
+This is a proof-of-work hub: small, reproducible case studies that show
+**threat → repro → impact → fix → prevention** (tests + SDLC controls).
 
-## Case studies (code + writeups)
-1) [ ] IDOR in a REST API (authz model + tests + fix)
-2) [ ] Broken access control via missing policy checks
-3) [ ] SQL injection in legacy data access
-4) [ ] SSRF in an integration feature (allowlists + egress controls)
-5) [ ] Stored XSS in an admin workflow (encoding + CSP notes)
+## How to use this repo
+- `main` contains the **remediated** implementation and regression tests.
+- Vulnerable snapshots are preserved via **tags/commits** for safe, local reproduction.
+
+## OWASP Top 10 case studies
+
+### PHP
+- **A01 Broken Access Control**
+  - `php/A01-broken-access-control/idor-rest-api-slim/` — IDOR in a REST API (authz model + tests)
+
+### Python
+- (planned)
 
 ## Secure SDLC & AWS notes (practical)
 1) [ ] IAM least privilege review + example policies
