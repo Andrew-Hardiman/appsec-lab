@@ -3,6 +3,13 @@
 ## Threat model
 ## Vulnerable behavior
 ## Reproduction (HTTP requests)
+
+## Vulnerable snapshot
+The intentionally vulnerable state is preserved at tag `php-a01-idor-vulnerable`.
+
+To view the vulnerable code on GitHub (in this folder), open:
+https://github.com/Andrew-Hardiman/appsec-lab/tree/php-a01-idor-vulnerable/php/A01-broken-access-control/idor-rest-api-slim
+
 ## Impact
 ## Fix (authz model)
 ## Regression tests
