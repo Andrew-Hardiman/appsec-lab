@@ -41,7 +41,7 @@ $app->get('/api/documents/{docId}', function (Request $request, Response $respon
         if($documentRow['docId'] === $documentID) {
             $documentFound = true;
 	    $documentData = $documentRow['document'];
- 
+
             break;
 	}
     }
