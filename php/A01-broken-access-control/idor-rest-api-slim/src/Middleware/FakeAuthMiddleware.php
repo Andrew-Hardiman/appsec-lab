@@ -25,7 +25,7 @@ final class FakeAuthMiddleware implements MiddlewareInterface
         $this->responseFactory = $responseFactory;
     }
 
-    public function process(Request $request, RequestHandler $requestHandler): Response
+    public function process(Request $request, RequestHandler $handler): Response
     {
         $userIDHeader = trim($request->getHeaderLine('X-User-Id'));
 
@@ -34,11 +34,11 @@ final class FakeAuthMiddleware implements MiddlewareInterface
 
             $response = $response->withHeader('Content-Type', 'application/json');
 
-            $response->getBody()->write(json_encode(['error' => 'unauthenticated']));
+            $response->getBody()->write(json_encode(['error' => 'unauthenticated']) . "\n");
             return $response;
         } else {
             $requestWithUser = $request->withAttribute('user_id', $userIDHeader);
-            return $requestHandler->handle($requestWithUser);
+            return $handler->handle($requestWithUser);
         } 
     }
 }
