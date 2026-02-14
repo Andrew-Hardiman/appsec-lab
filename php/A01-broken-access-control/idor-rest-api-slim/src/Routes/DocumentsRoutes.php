@@ -24,21 +24,30 @@ final class DocumentsRoutes
 
             $documentFound = false;
             $documentData = null;
+            $ownerUserId = null;
 
             foreach($documentDatabase as $documentRow) {
                 if($documentRow['docId'] === $documentID) {
                     $documentFound = true;
                     $documentData = $documentRow['document'];
+                    $ownerUserId = $documentRow['ownerUserId'];
 
                     break;
                 }
             }
 
             if($documentFound) {
-                $response->getBody()->write(json_encode(["document" => $documentData]) . "\n");
+                $currentUserId = (int) $request->getAttribute('user_id');
+
+                if($ownerUserId !== null && $currentUserId !== (int) $ownerUserId) {
+                    $response = $response->withStatus(403);
+                    $response->getBody()->write(json_encode(['error' => 'forbidden']) . "\n");
+                } else {
+                    $response->getBody()->write(json_encode(["document" => $documentData]) . "\n");
+                }
             } else {
-                $response->getBody()->write(json_encode(['error' => 'Document not found']) . "\n");
                 $response = $response->withStatus(404);
+                $response->getBody()->write(json_encode(['error' => 'Document not found']) . "\n");
             }
 
             return $response->withHeader('Content-Type', 'application/json');
