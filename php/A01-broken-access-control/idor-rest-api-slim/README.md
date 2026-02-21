@@ -28,7 +28,7 @@ curl -i -H "X-User-Id: 1" localhost:8085/api/documents/1
 curl -i -H "X-User-Id: 1" localhost:8085/api/documents/2
 ```
 
-Expected resuts:
+Expected results:
 
 ```json
 {"document":"This is user 1 personal information"}
@@ -37,7 +37,23 @@ Expected resuts:
 
 ## Impact
 ## Fix (authz model)
+
 ## Regression tests
+
+Run the tests from the case study root:
+
+```bash
+cd php/A01-broken-access-control/idor-rest-api-slim
+composer install
+./vendor/bin/phpunit
+```
+The suite covers:
+
+- `401` when `X-User-Id` is missing (unauthenticated)
+- `403` when a non-owner requests a private document (forbidden)
+- `404` when the document does not exist (not found)
+- `200` for owner access, and `200` for public documents
+
 ## Prevention (patterns + SDLC controls)
 
 ## Lab note: why we use `X-User-Id`
