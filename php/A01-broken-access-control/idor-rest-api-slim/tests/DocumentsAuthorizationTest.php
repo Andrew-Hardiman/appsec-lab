@@ -126,4 +126,24 @@ final class DocumentsAuthorizationTest extends TestCase
         $this->assertObjectHasProperty('error', $decoded);
         $this->assertSame('Document not found', $decoded->error);
     }
+
+    public function testUnauthenticatedRequestReturns401() 
+    {
+        // Create a GET request to '/api/documents/{docId}' for document identifier '1'
+        $request = $this->requestFactory->createServerRequest('GET', '/api/documents/1');
+
+        // Run request directly through app 
+        $response = $this->app->handle($request);
+
+        // Assert response status code is 401
+        $status = $response->getStatusCode();
+        $this->assertSame(401, $status);
+
+        $rawBody = (string) $response->getBody();
+
+        $decoded = $this->assertValidJson($rawBody);
+
+        $this->assertObjectHasProperty('error', $decoded);
+        $this->assertSame('unauthenticated', $decoded->error);
+    }
 }
