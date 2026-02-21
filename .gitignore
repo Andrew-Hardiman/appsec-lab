@@ -3,3 +3,4 @@
 .env
 .idea/
 .phpunit.result.cache
+.vscode/
