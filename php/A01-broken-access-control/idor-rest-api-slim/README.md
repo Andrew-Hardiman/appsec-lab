@@ -1,6 +1,6 @@
 # A01 Broken Access Control — IDOR in a REST API (Slim, PHP)
 
-> **Vulnerable snapshot:** `php-a01-idor-vulnerable`  
+> **Vulnerable snapshot:** `php-a01-idor-vulnerable-snapshot`  
 
 > This tag intentionally demonstrates an **Insecure Direct Object Reference (IDOR)**: access control is missing/insufficient, allowing one user to read another user’s private document by guessing/iterating `docId`.
 
