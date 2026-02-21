@@ -34,6 +34,7 @@ Expected results:
 {"document":"This is user 1 personal information"}
 {"document":"This is user 2 personal information"}
 ```
+These results are for the `php-a01-idor-vulnerable` tag; on `main` the second request returns `403` `{"error":"forbidden"}`.
 
 ## Impact
 ## Fix (authz model)
