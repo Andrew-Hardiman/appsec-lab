@@ -103,4 +103,27 @@ final class DocumentsAuthorizationTest extends TestCase
         $this->assertObjectHasProperty('document', $decoded);
         $this->assertSame('None sensitive information for everyone to read', $decoded->document);
     }
+
+    public function testMissingDocumentReturns404() 
+    {
+        // Create a GET request to '/api/documents/{docId}' for document identifier '9999' (Not Found)
+        $request = $this->requestFactory->createServerRequest('GET', '/api/documents/9999');
+
+        // Pseudo Authentication - User 1
+        $request = $request->withHeader('X-User-Id', '1');
+    
+        // Run request directly through app 
+        $response = $this->app->handle($request);
+
+        // Assert response status code is 404
+        $status = $response->getStatusCode();
+        $this->assertSame(404, $status);
+
+        $rawBody = (string) $response->getBody();
+
+        $decoded = $this->assertValidJson($rawBody);
+
+        $this->assertObjectHasProperty('error', $decoded);
+        $this->assertSame('Document not found', $decoded->error);
+    }
 }
