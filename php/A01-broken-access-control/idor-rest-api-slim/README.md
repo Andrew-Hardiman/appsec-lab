@@ -4,10 +4,9 @@
 ## Vulnerable behavior
 
 ## Vulnerable snapshot
-The intentionally vulnerable state is preserved at tag `php-a01-idor-vulnerable`.
+The intentionally vulnerable baseline is preserved on branch `vuln/php-a01-bac` (folder link below).
 
-To view the vulnerable code on GitHub (in this folder), open:
-https://github.com/Andrew-Hardiman/appsec-lab/tree/php-a01-idor-vulnerable/php/A01-broken-access-control/idor-rest-api-slim
+- Vulnerable baseline (GitHub): https://github.com/Andrew-Hardiman/appsec-lab/tree/vuln/php-a01-bac/php/A01-broken-access-control/idor-rest-api-slim
 
 ## Reproduction (HTTP requests)
 
