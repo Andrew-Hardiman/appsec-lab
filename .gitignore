@@ -2,3 +2,5 @@
 /**/.phpunit.cache/
 .env
 .idea/
+.phpunit.result.cache
+.vscode/
