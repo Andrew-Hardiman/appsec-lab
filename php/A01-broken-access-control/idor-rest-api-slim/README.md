@@ -15,7 +15,7 @@ The intentionally vulnerable baseline is preserved on branch `vuln/php-a01-bac` 
 Run the vulnerable snapshot:
 
 ```bash
-git checkout php-a01-idor-vulnerable
+git checkout vuln/php-a01-bac
 cd php/A01-broken-access-control/idor-rest-api-slim
 composer install
 php -S localhost:8085 -t public
