@@ -7,7 +7,7 @@ This is a proof-of-work hub: small, reproducible case studies that show
 
 ## How to use this repo
 - `main` contains the **remediated** implementation and regression tests.
-- Vulnerable snapshots are preserved via **tags/commits** for safe, local reproduction.
+- Vulnerable baselines are preserved on `vuln/<case>` branches for safe, local reproduction.
 
 ## OWASP Top 10 case studies
 
