@@ -1,8 +1,8 @@
 # A01 Broken Access Control — IDOR in a REST API (Slim, PHP)
 
-> **Vulnerable snapshot:** `php-a01-idor-vulnerable-snapshot`  
+> **Vulnerable baseline:** `vuln/php-a01-bac`  
 
-> This tag intentionally demonstrates an **Insecure Direct Object Reference (IDOR)**: access control is missing/insufficient, allowing one user to read another user’s private document by guessing/iterating `docId`.
+> This branch intentionally demonstrates an **Insecure Direct Object Reference (IDOR)**: access control is missing/insufficient, allowing one user to read another user’s private document by guessing/iterating `docId`.
 
 ## Threat model
 
@@ -26,7 +26,7 @@ Assuming the API is running locally (adjust host/port if needed):
 
 ### 1) Read your own document (baseline)
 ```bash
-curl -i -H "X-User-Id: 1" http://localhost:8080/api/documents/1
+curl -i -H "X-User-Id: 1" http://localhost:8085/api/documents/1
 ```
 
 ### 2) IDOR: read another user’s private document (the bug)
@@ -34,7 +34,7 @@ curl -i -H "X-User-Id: 1" http://localhost:8080/api/documents/1
 Request a document owned by someone else while authenticated as a different user:
 
 ```bash
-curl -i -H "X-User-Id: 1" http://localhost:8080/api/documents/2
+curl -i -H "X-User-Id: 1" http://localhost:8085/api/documents/2
 ```
 
 Vulnerable result: you receive 200 OK with the other user’s document data, even though you are not the owner.
