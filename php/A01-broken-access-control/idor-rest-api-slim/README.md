@@ -63,6 +63,8 @@ On `main`, the endpoint enforces **owner-or-public** authorization:
 
 ## Regression tests
 
+Run tests on `main` (patched branch): `git checkout main`
+
 Run the tests from the case study root:
 
 ```bash
