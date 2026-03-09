@@ -10,6 +10,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\App;
 use Slim\Factory\AppFactory as SlimAppFactory;
+use Throwable;
 
 final class Bootstrap
 {
@@ -17,11 +18,18 @@ final class Bootstrap
     {
         $app = SlimAppFactory::create();
 
+        $customNotFoundHandler = function (Request $request, Throwable $exception, bool $displayErrorDetails) use ($app): Response {
+            $response = $app->getResponseFactory()->createResponse(404);
+            $response->getBody()->write(json_encode(['error' => 'Not found']) . "\n");
+            return $response->withHeader('Content-Type', 'application/json');
+        };
+
         // Pseudo authentication Middleware
         $app->add(new FakeAuthMiddleware($app->getResponseFactory()));
 
         // Error Handling Middleware
-        $app->addErrorMiddleware(true, false, false);
+        $errorMiddleware = $app->addErrorMiddleware(true, false, false);
+        $errorMiddleware->setErrorHandler(\Slim\Exception\HttpNotFoundException::class, $customNotFoundHandler);
 
         // Documents API
         DocumentsRoutes::register($app);
