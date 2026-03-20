@@ -15,6 +15,8 @@ This is a proof-of-work hub: small, reproducible case studies that show
 ### PHP
 - **A01 Broken Access Control**
   - `php/A01-broken-access-control/idor-rest-api-slim/` — IDOR in a REST API (authz model + tests)
+- **A02 Security Misconfiguration**
+  - `php/A02-security-misconfiguration/exposed-diagnostics-slim/` — Exposed diagnostics endpoints (`/debug/phpinfo`, `/debug/routes`)
 
 ### Python
 - (planned)
