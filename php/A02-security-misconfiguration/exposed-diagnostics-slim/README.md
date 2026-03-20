@@ -9,21 +9,20 @@
 - Security objective: diagnostics must not be exposed in non-development environments
 
 ## Vulnerable behavior
-
-The application exposes diagnostic endpoints (`/debug/phpinfo` and `/debug/routes`) without any access control or environment gating. These endpoints disclose runtime configuration and internal application surface area (route inventory) to any caller. In a real deployment, this information materially helps attackers enumerate technologies, misconfigurations, and high-value targets.
+The vulnerable baseline (see `vuln/php-a02-misconfig`) exposes diagnostic endpoints (`/debug/phpinfo` and `/debug/routes`) without any access control or environment gating. These endpoints disclose runtime configuration and internal application surface area (route inventory) to any caller. In a real deployment, this information materially helps attackers enumerate technologies, misconfigurations, and high-value targets. On `main`, these endpoints are not registered by default and return `404 {"error":"Not found"}` unless explicitly enabled for local development.
 
 ## Vulnerable snapshot
-The intentionally vulnerable baseline will be preserved on branch `vuln/php-a02-misconfig` (folder link below) once the baseline is frozen.
+The intentionally vulnerable baseline is preserved on branch `vuln/php-a02-misconfig` (folder link below).
 
 - Vulnerable baseline (GitHub): https://github.com/Andrew-Hardiman/appsec-lab/tree/vuln/php-a02-misconfig/php/A02-security-misconfiguration/exposed-diagnostics-slim
 
 ## Reproduction (HTTP requests)
 ### Reproduce the vulnerability (exposed diagnostics)
 
-Run the app from this case study folder (current development is happening on `main`; the vulnerable baseline will later be frozen on `vuln/php-a02-misconfig`):
+Run the vulnerable snapshot:
 
 ```bash
-git checkout main
+git checkout vuln/php-a02-misconfig
 cd php/A02-security-misconfiguration/exposed-diagnostics-slim
 composer install
 php -S localhost:8086 -t public
@@ -43,6 +42,8 @@ Expected results:
 /debug/routes returns 200 with Content-Type: application/json and a JSON route list (patterns + methods)
 ```
 
+These results are for the `vuln/php-a02-misconfig` baseline; on main both endpoints return 404 {"error":"Not found"} by default.
+
 ## Impact
 
 - Information disclosure: reveals PHP version, extensions, INI paths, and other environment details (useful for exploit selection and chaining).
@@ -54,7 +55,7 @@ Expected results:
 On `main`, diagnostics are gated behind an explicit allow condition:
 
 - Default → `404 {"error":"Not found"}` for `/debug/*`
-- If `APP_ENV=dev` (local-only) → diagnostics routes are registered and return `200`
+- If `APP_ENV=dev` → diagnostics routes are registered and return `200` (e.g. `APP_ENV=dev php -S localhost:8086 -t public`)
 
 ## Regression tests
 

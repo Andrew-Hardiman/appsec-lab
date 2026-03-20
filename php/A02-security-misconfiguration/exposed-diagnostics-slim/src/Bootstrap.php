@@ -16,7 +16,7 @@ final class Bootstrap
     {
         $app = SlimAppFactory::create();
 
-       $customNotFoundHandler = function (Request $request, Throwable $exception, bool $displayErrorDetails) use ($app): Response {
+        $customNotFoundHandler = function (Request $request, Throwable $exception, bool $displayErrorDetails) use ($app): Response {
             $response = $app->getResponseFactory()->createResponse(404);
             $response->getBody()->write(json_encode(['error' => 'Not found']) . "\n");
             return $response->withHeader('Content-Type', 'application/json');
@@ -32,33 +32,37 @@ final class Bootstrap
             return $response->withHeader('Content-Type', 'application/json');
         });
 
+        // Only register diagnostics in dev.
+        $appEnv = getenv('APP_ENV') ?: 'prod';
 
-        // Returns `phpinfo()` output to the caller.
-        $app->get('/debug/phpinfo', function (Request $request, Response $response) {
-            ob_start();
-            phpinfo();
-            $html = ob_get_clean();
+        if ($appEnv === 'dev') {
+            // Returns `phpinfo()` output to the caller.
+            $app->get('/debug/phpinfo', function (Request $request, Response $response) {
+                ob_start();
+                phpinfo();
+                $html = ob_get_clean();
 
-            $response->getBody()->write($html);
-            return $response->withHeader('Content-Type', 'text/html; charset=UTF-8');
-        });
+                $response->getBody()->write($html);
+                return $response->withHeader('Content-Type', 'text/html; charset=UTF-8');
+            });
 
-        // Returns the application's route table to caller.
-        $app->get('/debug/routes', function (Request $request, Response $response) use ($app) {
-            $routes = [];
+            // Returns the application's route table to caller.
+            $app->get('/debug/routes', function (Request $request, Response $response) use ($app) {
+                $routes = [];
 
-            foreach ($app->getRouteCollector()->getRoutes() as $route) {
-                $routes[] = [
-                    'methods' => $route->getMethods(),
-                    'pattern' => $route->getPattern(),
-                    'name'    => $route->getName(),
-                ];
-            }
+                foreach ($app->getRouteCollector()->getRoutes() as $route) {
+                    $routes[] = [
+                        'methods' => $route->getMethods(),
+                        'pattern' => $route->getPattern(),
+                        'name'    => $route->getName(),
+                    ];
+                }
 
-            $response->getBody()->write(json_encode(['routes' => $routes]) . "\n");
-            return $response->withHeader('Content-Type', 'application/json');
-        });
-
+                $response->getBody()->write(json_encode(['routes' => $routes]) . "\n");
+                return $response->withHeader('Content-Type', 'application/json');
+            });
+        }
+        
         return $app;
     }
 }
