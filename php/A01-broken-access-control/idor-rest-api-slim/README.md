@@ -24,6 +24,15 @@ The endpoint returns document contents based only on `docId`, without correctly 
 
 Assuming the API is running locally (adjust host/port if needed):
 
+Run the vulnerable baseline:
+
+```bash
+git checkout vuln/php-a01-bac
+cd php/A01-broken-access-control/idor-rest-api-slim
+composer install
+php -S localhost:8085 -t public
+```
+
 ### 1) Read your own document (baseline)
 ```bash
 curl -i -H "X-User-Id: 1" http://localhost:8085/api/documents/1
