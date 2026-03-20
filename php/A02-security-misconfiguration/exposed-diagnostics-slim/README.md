@@ -1,5 +1,9 @@
 # A02 Security Misconfiguration — Exposed diagnostics endpoints (Slim, PHP)
 
+> Vulnerable baseline: `vuln/php-a02-misconfig`
+
+> This branch intentionally demonstrates a security misconfiguration: developer/operator diagnostics are exposed to untrusted callers.
+
 ## Threat model
 
 - Asset: runtime configuration + internal application surface area (routes/endpoints)
@@ -12,18 +16,14 @@
 
 The application exposes diagnostic endpoints (`/debug/phpinfo` and `/debug/routes`) without any access control or environment gating. These endpoints disclose runtime configuration and internal application surface area (route inventory) to any caller. In a real deployment, this information materially helps attackers enumerate technologies, misconfigurations, and high-value targets.
 
-## Vulnerable snapshot
-The intentionally vulnerable baseline will be preserved on branch `vuln/php-a02-misconfig` (folder link below) once the baseline is frozen.
-
-- Vulnerable baseline (GitHub): https://github.com/Andrew-Hardiman/appsec-lab/tree/vuln/php-a02-misconfig/php/A02-security-misconfiguration/exposed-diagnostics-slim
-
 ## Reproduction (HTTP requests)
-### Reproduce the vulnerability (exposed diagnostics)
 
-Run the app from this case study folder (current development is happening on `main`; the vulnerable baseline will later be frozen on `vuln/php-a02-misconfig`):
+Assuming the app is running locally (adjust host/port if needed):
+
+Run the vulnerable baseline:
 
 ```bash
-git checkout main
+git checkout vuln/php-a02-misconfig
 cd php/A02-security-misconfiguration/exposed-diagnostics-slim
 composer install
 php -S localhost:8086 -t public
@@ -56,22 +56,10 @@ On `main`, diagnostics are gated behind an explicit allow condition:
 - Default → `404 {"error":"Not found"}` for `/debug/*`
 - If `APP_ENV=dev` (local-only) → diagnostics routes are registered and return `200`
 
-## Regression tests
+✅ See the patched version and regression tests on main:
 
-Run tests on `main` (patched branch): `git checkout main`
-
-Run the tests from the case study root:
-
-```bash
-cd php/A02-security-misconfiguration/exposed-diagnostics-slim
-composer install
-./vendor/bin/phpunit
-```
-The suite covers:
-
-- 404 for /debug/phpinfo when APP_ENV is not dev
-- 404 for /debug/routes when APP_ENV is not dev
-- 200 for both endpoints when APP_ENV=dev
+- Browse: main branch in this repo
+- The “Regression tests” section on main documents PHPUnit coverage and how to run it
 
 ## Prevention (patterns + SDLC controls)
 
