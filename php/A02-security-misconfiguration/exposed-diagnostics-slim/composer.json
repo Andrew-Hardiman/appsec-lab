@@ -1,0 +1,20 @@
+{
+    "name": "andrew/exposed-diagnostics-slim",
+    "description": "A02 Security Misconfiguration case study: exposed diagnostics endpoints (Slim 4, PHP)",
+    "require": {
+        "slim/slim": "^4.0",
+        "slim/psr7": "^1.0"
+    },
+    "license": "UNLICENSED",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Andrew Hardiman",
+            "email": "40859802+Andrew-Hardiman@users.noreply.github.com"
+        }
+    ]
+}
