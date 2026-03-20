@@ -9,7 +9,8 @@ This is a proof-of-work hub: small, reproducible case studies that show
 - `main` contains the **remediated** implementation and regression tests.
 - Vulnerable baselines are preserved on `vuln/<case>` branches for safe, local reproduction.
 
-## OWASP Top 10 case studies
+## OWASP Top 10 case studies 
+**OWASP mapping:** Numbering follows *OWASP Top 10 (2025)*.
 
 ### PHP
 - **A01 Broken Access Control**
