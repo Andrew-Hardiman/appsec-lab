@@ -72,7 +72,8 @@ The suite covers:
 
 - 404 for /debug/phpinfo when APP_ENV is not dev
 - 404 for /debug/routes when APP_ENV is not dev
-- 200 for both endpoints when APP_ENV=dev
+- 200 for /debug/phpinfo when APP_ENV=dev
+- 200 for /debug/routes when APP_ENV=dev
 
 ## Prevention (patterns + SDLC controls)
 
