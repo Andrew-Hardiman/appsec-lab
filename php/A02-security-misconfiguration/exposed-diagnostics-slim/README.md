@@ -54,7 +54,7 @@ Expected results:
 On `main`, diagnostics are gated behind an explicit allow condition:
 
 - Default → `404 {"error":"Not found"}` for `/debug/*`
-- If `APP_ENV=dev` (local-only) → diagnostics routes are registered and return `200`
+- If `APP_ENV=dev` → diagnostics routes are registered and return `200` (e.g. `APP_ENV=dev php -S localhost:8086 -t public`)
 
 ✅ See the patched version and regression tests on main:
 
