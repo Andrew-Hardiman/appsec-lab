@@ -42,7 +42,7 @@ Expected results:
 /debug/routes returns 200 with Content-Type: application/json and a JSON route list (patterns + methods)
 ```
 
-These results are for the `vuln/php-a02-misconfig` baseline; on main both endpoints return 404 {"error":"Not found"} by default.
+These results are for the `vuln/php-a02-misconfig` baseline; on `main` both endpoints return `404` `{"error":"Not found"}` by default.
 
 ## Impact
 
