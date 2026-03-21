@@ -56,10 +56,10 @@ On `main`, diagnostics are gated behind an explicit allow condition:
 - Default → `404 {"error":"Not found"}` for `/debug/*`
 - If `APP_ENV=dev` → diagnostics routes are registered and return `200` (e.g. `APP_ENV=dev php -S localhost:8086 -t public`)
 
-✅ See the patched version and regression tests on main:
+✅ See the patched version and regression tests on `main`:
 
-- Browse: main branch in this repo
-- The “Regression tests” section on main documents PHPUnit coverage and how to run it
+- Browse: `main` branch in this repo
+- The “Regression tests” section on `main` documents PHPUnit coverage and how to run it
 
 ## Prevention (patterns + SDLC controls)
 
