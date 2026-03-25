@@ -1,7 +1,7 @@
 # AppSec Engineering Portfolio — Andrew Hardiman
 Application security / product security portfolio built from small, reproducible case studies and secure-by-design engineering examples.
 
-Primary background: backend software engineering (PHP, Python, AWS). Current focus: application security, product security, and secure SDLC practice.
+Primary background: backend software engineering (Python, PHP, AWS). Current focus: application security, product security, and secure SDLC practice.
 
 ## How to use this repo
 - `main` contains the **remediated** implementation and regression tests.
