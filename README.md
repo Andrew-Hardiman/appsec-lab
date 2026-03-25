@@ -1,30 +1,30 @@
-# AppSec Engineering Portfolio — Andrew
+# AppSec Engineering Portfolio — Andrew Hardiman
+Application security / product security portfolio built from small, reproducible case studies and secure-by-design engineering examples.
 
-Backend engineer (PHP/PYTHON/AWS) with a focus on application security and secure-by-design engineering.
-
-This is a proof-of-work hub: small, reproducible case studies that show
-**threat → repro → impact → fix → prevention** (tests + SDLC controls).
+Primary background: backend software engineering (PHP, Python, AWS). Current focus: application security, product security, and secure SDLC practice.
 
 ## How to use this repo
 - `main` contains the **remediated** implementation and regression tests.
 - Vulnerable baselines are preserved on `vuln/<case>` branches for safe, local reproduction.
 
-## OWASP Top 10 case studies 
 **OWASP mapping:** Numbering follows *OWASP Top 10 (2025)*.
 
-### PHP
-- **A01 Broken Access Control**
-  - `php/A01-broken-access-control/idor-rest-api-slim/` — IDOR in a REST API (authz model + tests)
-- **A02 Security Misconfiguration**
-  - `php/A02-security-misconfiguration/exposed-diagnostics-slim/` — Exposed diagnostics endpoints (`/debug/phpinfo`, `/debug/routes`)
+## Case studies
 
-### Python
-- (planned)
+### Web application vulnerabilities
+- **A01 Broken Access Control** — IDOR in a REST API with authorization remediation and regression tests  
+  Path: `php/A01-broken-access-control/idor-rest-api-slim/`
+- **A02 Security Misconfiguration** — Exposed diagnostics endpoints with environment-based route gating and regression tests  
+  Path: `php/A02-security-misconfiguration/exposed-diagnostics-slim/`
 
-## Secure SDLC & AWS notes (practical)
-1) [ ] IAM least privilege review + example policies
-2) [ ] Logging/alerting checklist (CloudWatch + app logs)
-3) [ ] CI security gates (secret scanning + dependency scanning + SAST)
+### Software supply chain / dependency risk
+- **A03 Software Supply Chain Failures** — Planned: insecure dependency introduction and remediation in a small reproducible service  
+  Path: `TBD`
+
+## Secure SDLC and cloud security
+- IAM least privilege review + example policies
+- Logging/alerting checklist (CloudWatch + app logs)
+- CI security gates (secret scanning + dependency scanning + SAST)
 
 ## Standards
 - Minimal demos, no proprietary code
