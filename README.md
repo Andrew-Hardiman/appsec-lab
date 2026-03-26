@@ -18,8 +18,8 @@ Primary background: backend software engineering (Python, PHP, AWS). Current foc
   Path: `php/A02-security-misconfiguration/exposed-diagnostics-slim/`
 
 ### Software supply chain / dependency risk
-- **A03 Software Supply Chain Failures** — Planned: insecure dependency introduction and remediation in a small reproducible service  
-  Path: `TBD`
+- **A03 Software Supply Chain Failures** — Known-vulnerable dependency in a CSV upload service with dependency remediation and secure version management  
+  Path: `python/A03-software-supply-chain-failures/insecure-csv-import-flask/`
 
 ## Secure SDLC and cloud security
 - IAM least privilege review + example policies
