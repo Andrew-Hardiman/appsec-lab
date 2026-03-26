@@ -1,29 +1,9 @@
-# AppSec Engineering Portfolio — Andrew
+# Vulnerable baseline branch
 
-Backend engineer (PHP/PYTHON/AWS) with a focus on application security and secure-by-design engineering.
+This branch preserves the vulnerable baseline for the case study below.
 
-This is a proof-of-work hub: small, reproducible case studies that show
-**threat → repro → impact → fix → prevention** (tests + SDLC controls).
+- **Case study:** A01 Broken Access Control — IDOR in a REST API with authorization remediation and regression tests
+- **Case study path:** `php/A01-broken-access-control/idor-rest-api-slim/`
+- **Canonical portfolio overview:** see the `main` branch README
 
-## How to use this repo
-- `main` contains the **remediated** implementation and regression tests.
-- Vulnerable baselines are preserved on `vuln/<case>` branches for safe, local reproduction.
-
-## OWASP Top 10 case studies
-
-### PHP
-- **A01 Broken Access Control**
-  - `php/A01-broken-access-control/idor-rest-api-slim/` — IDOR in a REST API (authz model + tests)
-
-### Python
-- (planned)
-
-## Secure SDLC & AWS notes (practical)
-1) [ ] IAM least privilege review + example policies
-2) [ ] Logging/alerting checklist (CloudWatch + app logs)
-3) [ ] CI security gates (secret scanning + dependency scanning + SAST)
-
-## Standards
-- Minimal demos, no proprietary code
-- Each case study includes: threat → repro → impact → fix → prevention
-- Code is intentionally small and readable
+Navigate to the case study directory above for the full threat model, reproduction steps, impact, and remediation context.
