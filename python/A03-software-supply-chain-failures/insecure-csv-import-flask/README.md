@@ -107,7 +107,7 @@ git checkout main
 cd python/A03-software-supply-chain-failures/insecure-csv-import-flask
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+pip install -r requirements-dev.txt
 python3 -m pytest
 ```
 
