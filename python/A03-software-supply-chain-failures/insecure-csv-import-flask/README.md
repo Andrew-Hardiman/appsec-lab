@@ -25,7 +25,7 @@ On `main`, the feature and endpoint remain, but the dependency posture is remedi
 
 The intentionally vulnerable baseline is preserved on branch `vuln/python-a03-supply-chain`.
 
-- **Vulnerable baseline (GitHub):** `https://github.com/Andrew-Hardiman/appsec-lab/tree/vuln/python-a03-supply-chain/python/A03-software-supply-chain-failures/insecure-csv-import-flask/`
+- **Vulnerable baseline (GitHub):** [python/A03-software-supply-chain-failures/insecure-csv-import-flask/](https://github.com/Andrew-Hardiman/appsec-lab/tree/vuln/python-a03-supply-chain/python/A03-software-supply-chain-failures/insecure-csv-import-flask)
 
 ## Reproduction (dependency state + local run)
 

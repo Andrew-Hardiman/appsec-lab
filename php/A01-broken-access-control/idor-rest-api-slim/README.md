@@ -15,7 +15,7 @@ The vulnerable baseline returns a document solely based on the caller-supplied `
 ## Vulnerable snapshot
 The intentionally vulnerable baseline is preserved on branch `vuln/php-a01-bac` (folder link below).
 
-- Vulnerable baseline (GitHub): https://github.com/Andrew-Hardiman/appsec-lab/tree/vuln/php-a01-bac/php/A01-broken-access-control/idor-rest-api-slim
+- **Vulnerable baseline (GitHub):** [php/A01-broken-access-control/idor-rest-api-slim/](https://github.com/Andrew-Hardiman/appsec-lab/tree/vuln/php-a01-bac/php/A01-broken-access-control/idor-rest-api-slim)
 
 ## Reproduction (HTTP requests)
 

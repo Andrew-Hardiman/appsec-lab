@@ -13,13 +13,13 @@ Primary background: backend software engineering (Python, PHP, AWS). Current foc
 
 ### Web application vulnerabilities
 - **A01 Broken Access Control** — IDOR in a REST API with authorization remediation and regression tests  
-  Path: `php/A01-broken-access-control/idor-rest-api-slim/`
+  Path: [`php/A01-broken-access-control/idor-rest-api-slim/`](https://github.com/Andrew-Hardiman/appsec-lab/tree/main/php/A01-broken-access-control/idor-rest-api-slim)
 - **A02 Security Misconfiguration** — Exposed diagnostics endpoints with environment-based route gating and regression tests  
-  Path: `php/A02-security-misconfiguration/exposed-diagnostics-slim/`
+  Path: [`php/A02-security-misconfiguration/exposed-diagnostics-slim/`](https://github.com/Andrew-Hardiman/appsec-lab/tree/main/php/A02-security-misconfiguration/exposed-diagnostics-slim)
 
 ### Software supply chain / dependency risk
 - **A03 Software Supply Chain Failures** — Known-vulnerable dependency in a CSV upload service with dependency remediation and secure version management  
-  Path: `python/A03-software-supply-chain-failures/insecure-csv-import-flask/`
+  Path: [`python/A03-software-supply-chain-failures/insecure-csv-import-flask/`](https://github.com/Andrew-Hardiman/appsec-lab/tree/main/python/A03-software-supply-chain-failures/insecure-csv-import-flask)
 
 ## Secure SDLC and cloud security
 - IAM least privilege review + example policies

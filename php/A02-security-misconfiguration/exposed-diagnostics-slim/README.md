@@ -14,7 +14,7 @@ The vulnerable baseline (see `vuln/php-a02-misconfig`) exposes diagnostic endpoi
 ## Vulnerable snapshot
 The intentionally vulnerable baseline is preserved on branch `vuln/php-a02-misconfig` (folder link below).
 
-- Vulnerable baseline (GitHub): https://github.com/Andrew-Hardiman/appsec-lab/tree/vuln/php-a02-misconfig/php/A02-security-misconfiguration/exposed-diagnostics-slim
+- **Vulnerable baseline (GitHub):** [php/A02-security-misconfiguration/exposed-diagnostics-slim/](https://github.com/Andrew-Hardiman/appsec-lab/tree/vuln/php-a02-misconfig/php/A02-security-misconfiguration/exposed-diagnostics-slim)
 
 ## Reproduction (HTTP requests)
 ### Reproduce the vulnerability (exposed diagnostics)
