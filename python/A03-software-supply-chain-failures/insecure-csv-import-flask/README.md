@@ -129,7 +129,22 @@ In addition to the HTTP regression tests, remediation can be verified directly b
 pip show Flask Werkzeug
 ```
 
-You can also make a normal request to confirm the running app is serving with the remediated Werkzeug version in the response headers.
+You can also make a normal request to confirm the running app is serving with the remediated Werkzeug version in the response headers:
+
+```bash
+curl -i \
+  -F 'file=@sample.csv;type=text/csv' \
+  -F 'comments=baseline test upload' \
+  http://127.0.0.1:5000/import-users
+```
+
+Example `sample.csv`:
+
+```csv
+email,name,role
+alice@example.com,Alice Admin,admin
+bob@example.com,Bob User,user
+```
 
 ## Prevention (patterns + SDLC controls)
 
