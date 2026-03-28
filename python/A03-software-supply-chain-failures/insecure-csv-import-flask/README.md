@@ -1,7 +1,7 @@
 # A03 Software Supply Chain Failures — Known-vulnerable dependency in a CSV upload service (Flask, Python)
 
 > **Vulnerable baseline:** `vuln/python-a03-supply-chain`
->
+
 > This branch intentionally demonstrates a software supply-chain failure: the application pins a known-vulnerable dependency version in a security-relevant file upload path.
 
 ## Threat model
@@ -54,6 +54,14 @@ Then exercise the upload endpoint with a normal CSV file:
 
 ```bash
 curl -i -F "file=@/path/to/sample_users.csv" http://localhost:5000/import-users
+```
+
+Example `sample_users.csv`:
+
+```csv
+email,name,role
+alice@example.com,Alice,admin
+bob@example.com,Bob,user
 ```
 
 Expected result:
